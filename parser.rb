@@ -12,6 +12,7 @@ module Parser
       rating_attrs = parse_ratings(row)
       attrs = title_attrs.merge(rating_attrs, {
         rank: get_text(row, 'td.collection_rank'),
+        id: parse_id(row)
       })
 
       BoardGame.new(attrs)
@@ -20,6 +21,16 @@ module Parser
 
   def self.get_text(el, css)
     el.css(css).text.strip
+  end
+
+  def self.get_attr_val(el, css, attr)
+    el.css(css).attr(attr).value
+  end
+
+  def self.parse_id(el, css='td.collection_thumbnail a')
+    url = self.get_attr_val(el, css, 'href')
+    m = /boardgame\/(\d+)\//.match(url)
+    m.captures.first
   end
 
   def self.parse_title(el, css='td.collection_objectname')
