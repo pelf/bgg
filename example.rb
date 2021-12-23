@@ -2,36 +2,36 @@ require_relative './bgg'
 
 puts 'Light & quick big-group games'
 puts BGG.search({
-  'range[minplayers][max]' => '6',
-  'range[maxplayers][min]' => '8',
-  'floatrange[avgrating][min]' => '7',
-  'floatrange[avgweight][min]' => '1.2',
-  'floatrange[avgweight][max]' => '2.0',
-  'range[numvoters][min]' => '500',
-  'range[numweights][min]' => '50',
-  'range[playtime][max]' => '45',
+  'players_min' => '6',
+  'players_max' => '8',
+  'rating_min' => '7',
+  'weight_min' => '1.2',
+  'weight_max' => '2.0',
+  'voters_min' => '500',
+  'weights_min' => '50',
+  'play_time_max' => '45',
 })
 
 puts 'Recent light-mid 2-player games'
 puts BGG.search({
-  'range[minplayers][max]' => '2',
-  'range[maxplayers][min]' => '2',
-  'floatrange[avgrating][min]' => '7',
-  'floatrange[avgweight][min]' => '1.5',
-  'floatrange[avgweight][max]' => '2.5',
-  'range[numvoters][min]' => '500',
-  'range[numweights][min]' => '50',
-  'range[yearpublished][min]' => '2019',
+  'players_min' => '2',
+  'players_max' => '2',
+  'rating_min' => '7',
+  'weight_min' => '1.5',
+  'weight_max' => '2.5',
+  'voters_min' => '500',
+  'weights_min' => '50',
+  'year_min' => '2019',
 })
 
 puts '3-5-player coop games'
 puts BGG.search({
-  'range[minplayers][max]' => '3',
-  'range[maxplayers][min]' => '5',
-  'floatrange[avgrating][min]' => '7',
-  'floatrange[avgweight][min]' => '1.2',
-  'floatrange[avgweight][max]' => '2.5',
-  'range[numvoters][min]' => '500',
-  'range[numweights][min]' => '50',
+  'players_min' => '3',
+  'players_max' => '5',
+  'rating_min' => '7',
+  'weight_min' => '1.2',
+  'weight_max' => '2.5',
+  'voters_min' => '500',
+  'weights_min' => '50',
   'propertyids[]' => '2023' # coop mechanic (can't be included as empty in base search)
 })
